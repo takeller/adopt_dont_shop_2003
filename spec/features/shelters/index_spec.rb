@@ -17,4 +17,13 @@ describe "Shelters index page", type: :feature do
 
     expect(page).to have_link("New Shelter", :href=> "/shelters/new")
   end
+
+  it "can see a link to update a shelter's information" do
+    shelter1 = Shelter.create(name: "Pups For You")
+    shelter2 = Shelter.create(name: "Kitty Rescue")
+    
+    visit "/shelters"
+
+    expect(page).to have_link("Update Shelter")
+  end
 end
