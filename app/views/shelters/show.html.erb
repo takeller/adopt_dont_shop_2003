@@ -1,11 +1,11 @@
 <a href="/shelters">Shelter Index</a>
 
-<h1><%= @shelter.name %></h1>
+<h1><%= link_to "#{@shelter.name}" %></h1>
 
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %></p>
 <p><%= @shelter.state %></p>
 <p><%= @shelter.zip %></p>
 
-<a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a>
+<a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a><br>
 <%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %>

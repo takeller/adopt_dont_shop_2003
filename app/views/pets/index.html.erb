@@ -5,7 +5,7 @@
   <p><%= pet.name %></p>
   <p><%= pet.approximate_age %></p>
   <p><%= pet.sex %></p>
-  <p><%= pet.shelter.name %></p>
-  <%= link_to "Update #{pet.name}", "/pets/#{pet.id}/edit" %>
+  <p><%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
+  <%= link_to "Update #{pet.name}", "/pets/#{pet.id}/edit" %><br>
   <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
 <% end %>
