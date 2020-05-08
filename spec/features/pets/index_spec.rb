@@ -21,5 +21,16 @@ describe "Pets Index Page" do
       expect(page).to have_content(pet2.sex)
       expect(page).to have_content(shelter1.name)
     end
+
+    it "can update a pet's info" do
+      shelter1 = Shelter.create(name: "Puppies United")
+      pet1 = Pet.create(image: "https://pixabay.com/get/54e7dd464a55a814f1dc8460da2932761d37d6e1555874_640.jpg", name: "Rosco", approximate_age: "5", sex: "Male", shelter_id: shelter1.id)
+
+      visit "/pets" 
+
+      click_on "Update #{pet1.name}"
+
+      expect(current_path).to eq("/pets/#{pet1.id}/edit")
+    end
   end
 end
