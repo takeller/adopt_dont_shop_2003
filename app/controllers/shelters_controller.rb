@@ -11,6 +11,11 @@ class SheltersController < ApplicationController
   def new
   end
 
+  def list_pets
+    @pets = Shelter.find(params[:shelter_id]).pets
+    @shelter_id = params[:shelter_id]
+  end
+
   def create
     shelter = Shelter.new({
       name: params[:shelter][:name],

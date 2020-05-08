@@ -23,5 +23,29 @@ describe "Shelter's Pet's index page" do
 
       expect(page).to_not have_content(pet3.name)
     end
+
+    it "can add a new adoptable pet to that shelter" do
+      shelter1 = Shelter.create(name: "Puppies United")
+
+      visit "/shelters/#{shelter1.id}/pets"
+      click_link "Create Pet"
+
+      expect(current_path).to eq("/shelters/#{shelter1.id}/pets/new")
+
+      fill_in :image, with: "https://pixabay.com/get/5ee0d44b4854b10ff3d89960c62d3f761d37dae25757_640.jpg"
+      fill_in :name, with: "Sammy"
+      fill_in :description, with: "Rat Terrier"
+      fill_in :approximate_age, with: "12.5"
+      fill_in :sex, with: "male"
+
+      click_on "Create Pet"
+
+      expect(current_path).to eq("/shelters/#{shelter1.id}/pets")
+
+      pet1 = Pet.last
+
+      expect(page).to have_content(pet1.name)
+      expect(page).to have_content(pet1.adoption_status)
+    end
   end
 end

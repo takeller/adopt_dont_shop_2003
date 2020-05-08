@@ -41,6 +41,6 @@ describe "Shelters show page", type: :feature do
     expect(current_path).to eq("/shelters")
 
     expect(page).to have_content(shelter2.name)
-    expect(page).to_not have_content(shelter1.name)
+    expect(page).to_not have_content("Pups for You")
   end
 end
