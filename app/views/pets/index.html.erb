@@ -2,7 +2,7 @@
 
 <% @pets.each do |pet| %>
   <%= image_tag(pet.image, size: "150x125") %>
-  <p><%= pet.name %></p>
+  <p><%= link_to "#{pet.name}", "/pets/#{pet.id}"%></p>
   <p><%= pet.approximate_age %></p>
   <p><%= pet.sex %></p>
   <p><%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
