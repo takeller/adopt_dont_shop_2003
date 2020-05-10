@@ -89,6 +89,7 @@ p {
 #showPetContainer {
   display: flex;
   margin-left: 100px;
+  margin-top: 25px;
 }
 
 .showContainerText {
