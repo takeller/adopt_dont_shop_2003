@@ -28,6 +28,7 @@ describe "Shelter's Pet's index page" do
       shelter1 = Shelter.create(name: "Puppies United")
 
       visit "/shelters/#{shelter1.id}/pets"
+
       click_link "Create Pet"
 
       expect(current_path).to eq("/shelters/#{shelter1.id}/pets/new")
@@ -45,7 +46,9 @@ describe "Shelter's Pet's index page" do
       pet1 = Pet.last
 
       expect(page).to have_content(pet1.name)
-      expect(page).to have_content(pet1.adoption_status)
+
+      click_on "#{pet1.name}"
+      expect(page).to have_content("adoptable")
     end
 
     it "can update a pet's info" do
